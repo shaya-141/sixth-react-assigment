@@ -12,6 +12,7 @@ import Signup from './Pages/Signup'
 import Profile from './Pages/Profile'
 import {  onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Utilitis/Firebase";
+import Cart from './Pages/Cart'
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
           <Route path='/Login' element={ <Login></Login> }></Route>
           <Route path = '/Profile' element={<Profile detail={userDetail}></Profile>}></Route>
           <Route path='/Signup' element={<Signup></Signup>}></Route>
+          <Route path='/Cart' element={<Cart></Cart>}></Route>
           <Route path='/ProductDetail/:id' element={<ProductDetail></ProductDetail>}></Route>
         </Routes>
         </BrowserRouter>

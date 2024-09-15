@@ -46,7 +46,7 @@ function Signup() {
 
     return (
         <>
-            <div id='container' className='w-[400px] mt-5 rounded-md text-left h-[500px] p-7 flex flex-col gap-5 border m-auto'>
+            <div id='container' className='w-[400px] relative top-10 rounded-md text-left h-[500px] p-7 flex flex-col gap-5 border m-auto'>
 
                 <h1 className='mt-4 text-[20px] font-semibold'>Signup</h1>
 

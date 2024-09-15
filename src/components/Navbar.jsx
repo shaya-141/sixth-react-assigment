@@ -18,16 +18,16 @@ function Navbar({isLoggedin}) {
   // },[LoginorProfile])
 
   return (
-    <nav className=' w-full h-14 flex items-center justify-between  rounded-md text-white bg-[#FF406D]'>
+    <nav className=' w-full h-14 flex items-center justify-between border  rounded-md '>
       <Link to={'/'}>
-        <h1 className='text-[22px] font-semibold pl-2 '>ECOMMERCE</h1>
+        <h1 className='text-[20px] font-semibold pl-2 text-[#FF406D]'>ECOMMERCE</h1>
       </Link>
 
-        <div className="links flex gap-8 m-6">
+        <div className="links flex gap-8 m-6 items-center">
             <Link  className='text-[16px]' to={'/'}>Home</Link>
             <Link  className='text-[16px]' to={'/Products'}>Products</Link>
             <Link to={isLoggedin ? '/Profile' : '/Login'}>{isLoggedin ? 'Profile' : 'Login'}</Link>
-            <Link  className='text-[16px]' to={'/'}><i class="fa-solid fa-cart-shopping"></i></Link>
+            <Link  className='text-[16px]' to={'/Cart'}><i className="fa-solid fa-cart-shopping"></i></Link>
         </div>
     </nav>
   )

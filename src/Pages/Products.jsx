@@ -6,6 +6,7 @@ import Input from '../components/Input'
 import SearchBox from '../components/SearchBox'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ShimmerText, ShimmerTitle } from 'react-shimmer-effects'
 
 // import Button from './Button'
 
@@ -14,8 +15,8 @@ function Products() {
   const [filterProducts, setfilterProducts] = useState([])
   const [category, setcategory] = useState('all')
   const [Categories, setCategories] = useState([])
-
   const [SearchProduct, setSearchProduct] = useState('')
+  const [loadingstate, setloadingstate] = useState(false)
 
   useEffect(() => {
 
@@ -29,6 +30,13 @@ function Products() {
         setproducts(data.products)
         setfilterProducts(data.products)
       })
+
+    setTimeout(() => {
+
+      setloadingstate(true)
+    }, 1000);
+   
+
       
     }, [category])
     
@@ -79,18 +87,20 @@ function Products() {
       }}></SearchBox>
       <section id="ProductsContainer" className=' w-full flex'>
 
-        <Sidebar Categories={Categories}  >
-          <h3 className='pl-1 cursor-pointer text-[13px]' onClick={() => {
-            setcategory('all')
-
-          }
+        <Sidebar Categories={Categories} loading={loadingstate} >
+          {
+            loadingstate ?
+            <h3 className='pl-1 cursor-pointer text-[13px]' onClick={() => {setcategory('all')}
           }>All</h3>
+          :
+        <ShimmerText line={1}></ShimmerText>
+        }
           {
             Categories.map((data, index) => {
               return (
-
-                <Input title={data} isChoosen={data} func={(e) => { setcategory(data) }} key={index}></Input>
-              )
+                  <Input title={data} isChoosen={data} func={(e) => { setcategory(data) }} key={index} loading ={loadingstate}></Input>
+ 
+                )
             })
           }
         </Sidebar>
@@ -101,7 +111,7 @@ function Products() {
             filterProducts.map((item, index) => {
               return (
                 <Link to={`/ProductDetail/${item.id}`} key={index}>
-                <Card data={item}  ></Card>
+                <Card data={item} loading ={loadingstate}></Card>
                 </Link>
               )
             })
